@@ -18,7 +18,8 @@ namespace AWBugTracker.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public int ProjectId { get; set; }
-        public int BugTypeId { get; set; }
+        public int TicketTypeId { get; set; }
+        public int ProgressId { get; set; }
         public DateTime DateTimeTicketCreated { get; private set; }
     }
 }
