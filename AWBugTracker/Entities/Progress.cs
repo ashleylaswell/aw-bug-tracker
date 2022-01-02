@@ -15,7 +15,5 @@ namespace AWBugTracker.Entities
         public string Title { get; set; }
         [ForeignKey("ProgressId")]
         public virtual ICollection<Ticket> Tickets { get; set; }
-        [ForeignKey("ProgressId")]
-        public virtual ICollection<Project> Projects { get; set; }
     }
 }

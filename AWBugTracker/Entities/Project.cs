@@ -19,7 +19,6 @@ namespace AWBugTracker.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string ThumbnailImagePath { get; set; }
-        public int ProgressId { get; set; }
         public DateTime DateTimeProjectCreated { get; private set; }
         [ForeignKey("ProjectId")]
         public virtual ICollection<Ticket> Tickets { get; set; }
