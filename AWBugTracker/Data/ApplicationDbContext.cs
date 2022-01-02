@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AWBugTracker.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace AWBugTracker.Data
@@ -20,6 +22,8 @@ namespace AWBugTracker.Data
         public string Address2 { get; set; }
         [StringLength(50)]
         public string ZipCode { get; set; }
+        [ForeignKey("UserId")]
+        public virtual ICollection<UserCategory> UserCateogry { get; set; }
     }
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
