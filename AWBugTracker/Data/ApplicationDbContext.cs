@@ -31,5 +31,10 @@ namespace AWBugTracker.Data
             : base(options)
         {
         }
+        public DbSet<Project> Project { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public DbSet<TicketType> TicketType { get; set; }
+        public DbSet<Progress> Progress { get; set; }
+        public DbSet<UserCategory> UserCategory { get; set; }
     }
 }
