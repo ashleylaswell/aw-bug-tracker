@@ -19,7 +19,7 @@ namespace AWBugTracker.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public string ThumbnailImagePath { get; set; }
-        public DateTime DateTimeProjectCreated { get; private set; }
+        public DateTime DateTimeProjectCreated { get; set; }
         [ForeignKey("ProjectId")]
         public virtual ICollection<Ticket> Tickets { get; set; }
         [ForeignKey("ProjectId")]

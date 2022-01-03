@@ -26,6 +26,6 @@ namespace AWBugTracker.Entities
         public virtual ICollection<SelectListItem> TicketTypes { get; set; }
         [NotMapped]
         public virtual ICollection<SelectListItem> Statuses { get; set; }
-        public DateTime DateTimeTicketCreated { get; private set; }
+        public DateTime DateTimeTicketCreated { get; set; }
     }
 }
