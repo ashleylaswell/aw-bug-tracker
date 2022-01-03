@@ -39,6 +39,11 @@
                 <span asp-validation-for="ProgressId" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="TicketSeverityId" class="control-label"></label>
+                <select asp-for="TicketSeverityId" class="form-control" asp-items="ViewBag.TicketSeverityId"></select>
+                <span asp-validation-for="TicketSeverityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="DateTimeTicketCreated" class="control-label"></label>
                 <input asp-for="DateTimeTicketCreated" class="form-control" />
                 <span asp-validation-for="DateTimeTicketCreated" class="text-danger"></span>

@@ -33,6 +33,7 @@ namespace AWBugTracker.Areas.Admin.Controllers
                                            DateTimeTicketCreated = ticket.DateTimeTicketCreated,
                                            TicketTypeId = ticket.TicketTypeId,
                                            ProgressId = ticket.ProgressId,
+                                           TicketSeverityId = ticket.TicketSeverityId,
                                            ProjectId = projectId
                                        }).ToListAsync();
             return View(list);
@@ -67,7 +68,7 @@ namespace AWBugTracker.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,ProjectId,TicketTypeId,ProgressId,DateTimeTicketCreated")] Ticket ticket)
+        public async Task<IActionResult> Create([Bind("Id,Title,Description,ProjectId,TicketTypeId,ProgressId,TicketSeverityId,DateTimeTicketCreated")] Ticket ticket)
         {
             if (ModelState.IsValid)
             {
@@ -99,7 +100,7 @@ namespace AWBugTracker.Areas.Admin.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ProjectId,TicketTypeId,ProgressId,DateTimeTicketCreated")] Ticket ticket)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Title,Description,ProjectId,TicketTypeId,ProgressId,TicketSeverityId,DateTimeTicketCreated")] Ticket ticket)
         {
             if (id != ticket.Id)
             {

@@ -22,10 +22,13 @@ namespace AWBugTracker.Entities
         public int ProjectId { get; set; }
         public int TicketTypeId { get; set; }
         public int ProgressId { get; set; }
+        public int TicketSeverityId { get; set; }
         [NotMapped]
         public virtual ICollection<SelectListItem> TicketTypes { get; set; }
         [NotMapped]
         public virtual ICollection<SelectListItem> Statuses { get; set; }
+        [NotMapped]
+        public virtual ICollection<SelectListItem> TicketSeverities { get; set; }
         public DateTime DateTimeTicketCreated { get; set; }
     }
 }

@@ -35,6 +35,7 @@ namespace AWBugTracker.Data
         public DbSet<Ticket> Ticket { get; set; }
         public DbSet<TicketType> TicketType { get; set; }
         public DbSet<Progress> Progress { get; set; }
+        public DbSet<TicketSeverity> TicketSeverity { get; set; }
         public DbSet<UserCategory> UserCategory { get; set; }
     }
 }
