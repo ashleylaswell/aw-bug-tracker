@@ -21,10 +21,21 @@ namespace AWBugTracker.Areas.Admin.Controllers
         }
 
         // GET: Admin/Ticket
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int projectId)
         {
-
-            return View(await _context.Ticket.ToListAsync());
+            List<Ticket> list = await (from ticket in _context.Ticket
+                                       where ticket.ProjectId == projectId
+                                       select new Ticket
+                                       {
+                                           Id = ticket.Id,
+                                           Title = ticket.Title,
+                                           Description = ticket.Description,
+                                           DateTimeTicketCreated = ticket.DateTimeTicketCreated,
+                                           TicketTypeId = ticket.TicketTypeId,
+                                           ProgressId = ticket.ProgressId,
+                                           ProjectId = projectId
+                                       }).ToListAsync();
+            return View(list);
         }
 
         // GET: Admin/Ticket/Details/5
