@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using AWBugTracker.Enums;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,15 +21,18 @@ namespace AWBugTracker.Entities
         public string Title { get; set; }
         public string Description { get; set; }
         public int ProjectId { get; set; }
-        public int TicketTypeId { get; set; }
-        public int ProgressId { get; set; }
-        public int TicketSeverityId { get; set; }
-        [NotMapped]
-        public virtual ICollection<SelectListItem> TicketTypes { get; set; }
-        [NotMapped]
-        public virtual ICollection<SelectListItem> Statuses { get; set; }
-        [NotMapped]
-        public virtual ICollection<SelectListItem> TicketSeverities { get; set; }
+        //public int TicketTypeId { get; set; }
+        //public int ProgressId { get; set; }
+        //public int TicketSeverityId { get; set; }
+        //[NotMapped]
+        //public virtual ICollection<SelectListItem> TicketTypes { get; set; }
+        //[NotMapped]
+        //public virtual ICollection<SelectListItem> Statuses { get; set; }
+        //[NotMapped]
+        //public virtual ICollection<SelectListItem> TicketSeverities { get; set; }
+
+        public TicketTypeEnum TicketTypeEnum { get; set; }
+
         public DateTime DateTimeTicketCreated { get; set; }
     }
 }

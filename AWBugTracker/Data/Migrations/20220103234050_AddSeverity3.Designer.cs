@@ -4,14 +4,16 @@ using AWBugTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AWBugTracker.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220103234050_AddSeverity3")]
+    partial class AddSeverity3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -160,19 +162,16 @@ namespace AWBugTracker.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProgressId")
+                    b.Property<int>("ProgressId")
                         .HasColumnType("int");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TicketSeverityId")
+                    b.Property<int>("TicketSeverityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketTypeEnum")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TicketTypeId")
+                    b.Property<int>("TicketTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -388,7 +387,9 @@ namespace AWBugTracker.Data.Migrations
                 {
                     b.HasOne("AWBugTracker.Entities.Progress", null)
                         .WithMany("Tickets")
-                        .HasForeignKey("ProgressId");
+                        .HasForeignKey("ProgressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AWBugTracker.Entities.Project", null)
                         .WithMany("Tickets")
@@ -398,11 +399,15 @@ namespace AWBugTracker.Data.Migrations
 
                     b.HasOne("AWBugTracker.Entities.TicketSeverity", null)
                         .WithMany("Tickets")
-                        .HasForeignKey("TicketSeverityId");
+                        .HasForeignKey("TicketSeverityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("AWBugTracker.Entities.TicketType", null)
                         .WithMany("Tickets")
-                        .HasForeignKey("TicketTypeId");
+                        .HasForeignKey("TicketTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("AWBugTracker.Entities.UserCategory", b =>
