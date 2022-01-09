@@ -104,23 +104,6 @@ namespace AWBugTracker.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("AWBugTracker.Entities.Progress", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Progress");
-                });
-
             modelBuilder.Entity("AWBugTracker.Entities.Project", b =>
                 {
                     b.Property<int>("Id")
@@ -154,25 +137,25 @@ namespace AWBugTracker.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime>("DateTimeTicketCreated")
+                    b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProgressId")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("ModifiedOn")
+                        .HasColumnType("datetime2");
 
                     b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TicketSeverityId")
+                    b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("TicketTypeEnum")
+                    b.Property<int>("TicketSeverity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TicketTypeId")
+                    b.Property<int>("TicketType")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -181,50 +164,10 @@ namespace AWBugTracker.Data.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ProgressId");
 
                     b.HasIndex("ProjectId");
 
-                    b.HasIndex("TicketSeverityId");
-
-                    b.HasIndex("TicketTypeId");
-
                     b.ToTable("Ticket");
-                });
-
-            modelBuilder.Entity("AWBugTracker.Entities.TicketSeverity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TicketSeverity");
-                });
-
-            modelBuilder.Entity("AWBugTracker.Entities.TicketType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TicketType");
                 });
 
             modelBuilder.Entity("AWBugTracker.Entities.UserCategory", b =>
@@ -386,23 +329,11 @@ namespace AWBugTracker.Data.Migrations
 
             modelBuilder.Entity("AWBugTracker.Entities.Ticket", b =>
                 {
-                    b.HasOne("AWBugTracker.Entities.Progress", null)
-                        .WithMany("Tickets")
-                        .HasForeignKey("ProgressId");
-
                     b.HasOne("AWBugTracker.Entities.Project", null)
                         .WithMany("Tickets")
                         .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("AWBugTracker.Entities.TicketSeverity", null)
-                        .WithMany("Tickets")
-                        .HasForeignKey("TicketSeverityId");
-
-                    b.HasOne("AWBugTracker.Entities.TicketType", null)
-                        .WithMany("Tickets")
-                        .HasForeignKey("TicketTypeId");
                 });
 
             modelBuilder.Entity("AWBugTracker.Entities.UserCategory", b =>
@@ -474,26 +405,11 @@ namespace AWBugTracker.Data.Migrations
                     b.Navigation("UserCateogry");
                 });
 
-            modelBuilder.Entity("AWBugTracker.Entities.Progress", b =>
-                {
-                    b.Navigation("Tickets");
-                });
-
             modelBuilder.Entity("AWBugTracker.Entities.Project", b =>
                 {
                     b.Navigation("Tickets");
 
                     b.Navigation("UserCategory");
-                });
-
-            modelBuilder.Entity("AWBugTracker.Entities.TicketSeverity", b =>
-                {
-                    b.Navigation("Tickets");
-                });
-
-            modelBuilder.Entity("AWBugTracker.Entities.TicketType", b =>
-                {
-                    b.Navigation("Tickets");
                 });
 #pragma warning restore 612, 618
         }
