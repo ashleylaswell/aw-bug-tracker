@@ -14,7 +14,9 @@ namespace AWBugTracker.Entities
         [StringLength(200, MinimumLength = 2)]
         public string Title { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Thumbnail Image Path")]
         public string ThumbnailImagePath { get; set; }
+        [Display(Name = "Created On")]
         public DateTime DateTimeProjectCreated { get; set; }
         [ForeignKey("ProjectId")]
         public virtual ICollection<Ticket> Tickets { get; set; }
