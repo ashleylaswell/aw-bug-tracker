@@ -51,7 +51,7 @@ namespace AWBugTracker.Data
             foreach (var entry in entries)
             {
                 // set UpdatedOn / CreatedOn appropriately
-                if (entry.Entity is Project projectTrackable)
+                if (entry.Entity is Project projectTrackable) 
                 {
                     switch (entry.State)
                     {
