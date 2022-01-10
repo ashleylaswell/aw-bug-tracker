@@ -9,10 +9,6 @@ namespace AWBugTracker.Entities
 {
     public class Project
     {
-        public Project()
-        {
-            DateTimeProjectCreated = DateTime.Now;
-        }
         public int Id { get; set; }
         [Required]
         [StringLength(200, MinimumLength = 2)]

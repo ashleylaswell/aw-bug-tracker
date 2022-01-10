@@ -34,7 +34,6 @@ namespace AWBugTracker.Data
             OnBeforeSaving();
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
-
         public override async Task<int> SaveChangesAsync(
            bool acceptAllChangesOnSuccess,
            CancellationToken cancellationToken = default(CancellationToken)
@@ -44,32 +43,36 @@ namespace AWBugTracker.Data
             return (await base.SaveChangesAsync(acceptAllChangesOnSuccess,
                           cancellationToken));
         }
-
         private void OnBeforeSaving()
         {
             var entries = ChangeTracker.Entries();
-            var utcNow = DateTime.Now;
+            var timeNow = DateTime.Now;
 
             foreach (var entry in entries)
             {
                 // set UpdatedOn / CreatedOn appropriately
-                if (entry.Entity is Ticket trackable)
+                if (entry.Entity is Project projectTrackable)
+                {
+                    switch (entry.State)
+                    {
+                        case EntityState.Added:
+                            projectTrackable.DateTimeProjectCreated = timeNow;
+                            break;
+                    }
+                }
+                // set UpdatedOn / CreatedOn appropriately
+                if (entry.Entity is Ticket ticketTrackable) 
                 {
                     switch (entry.State)
                     {
                         case EntityState.Modified:
-                            // set the updated date to "now"
-                            trackable.ModifiedOn = utcNow;
-
-                            // mark property as "don't touch"
-                            // we don't want to update on a Modify operation
+                            ticketTrackable.ModifiedOn = timeNow;
                             entry.Property("CreatedOn").IsModified = false;
                             break;
 
                         case EntityState.Added:
-                            // set both updated and created date to "now"
-                            trackable.CreatedOn = utcNow;
-                            trackable.ModifiedOn = utcNow;
+                            ticketTrackable.CreatedOn = timeNow;
+                            ticketTrackable.ModifiedOn = timeNow;
                             break;
                     }
                 }
@@ -78,7 +81,6 @@ namespace AWBugTracker.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-
         }
         public DbSet<Project> Project { get; set; }
         public DbSet<Ticket> Ticket { get; set; }
