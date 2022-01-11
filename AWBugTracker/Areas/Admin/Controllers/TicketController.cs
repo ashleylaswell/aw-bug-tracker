@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AWBugTracker.Data;
 using AWBugTracker.Entities;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AWBugTracker.Areas.Admin.Controllers
 {
