@@ -11,6 +11,7 @@ using AWBugTracker.Entities;
 namespace AWBugTracker.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class TicketController : Controller
     {
         private readonly ApplicationDbContext _context;
