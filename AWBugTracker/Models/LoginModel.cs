@@ -21,6 +21,6 @@ namespace AWBugTracker.Models
         [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }
 
-        public string LoginValid { get; set; }
+        public string LoginInvalid { get; set; }
     }
 }
