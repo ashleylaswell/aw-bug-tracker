@@ -1,7 +1,7 @@
 ﻿$(function () {
 
     $("#UserRegistrationModal").on('hidden.bs.modal', function (e) {
-        $("#UserRegistrationModal input[name='CategoryId']").val('0');
+        $("#UserRegistrationModal input[name='ProjectId']").val('0');
     });
 
     $('.RegisterLink').click(function () {
@@ -100,7 +100,7 @@
 
                 var parsed = $.parseHTML(data);
 
-                var hasErrors = $(parsed).find("input[name='RegistrationInValid']").val() == 'true';
+                var hasErrors = $(parsed).find("input[name='RegistrationInvalid']").val() == 'true';
 
                 if (hasErrors) {
 
