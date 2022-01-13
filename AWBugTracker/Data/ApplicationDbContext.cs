@@ -36,7 +36,7 @@ namespace AWBugTracker.Data
         }
         public override async Task<int> SaveChangesAsync(
            bool acceptAllChangesOnSuccess,
-           CancellationToken cancellationToken = default(CancellationToken)
+           CancellationToken cancellationToken = default
         )
         {
             OnBeforeSaving();
