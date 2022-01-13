@@ -8,6 +8,10 @@
 </div>
 
 <!-- Modal HTML -->
-<div id="UserLoginModal" class="modal fade">
+<div id="UserLoginModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <partial name="_UserLoginPartial" />
 </div>
+
+@section Scripts {
+    <script src="~/js/UserLogin.js"></script>
+}
