@@ -67,7 +67,7 @@ namespace AWBugTracker.Areas.Admin.Controllers
         // GET: Admin/Ticket/Create
         public IActionResult Create(int projectId)
         {
-            Ticket ticket = new Ticket
+            Ticket ticket = new()
             {
                 ProjectId = projectId
             };
