@@ -33,7 +33,6 @@ namespace AWBugTracker.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-
         public string Address1 { get; set; }
         public string Address2 { get; set; }
 
