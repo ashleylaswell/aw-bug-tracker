@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # User-specific files
+/20220110214841_AddAdminAccount.cs
 *.rsuser
 *.suo
 *.user
