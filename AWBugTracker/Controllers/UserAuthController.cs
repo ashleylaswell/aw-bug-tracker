@@ -78,7 +78,7 @@ namespace AWBugTracker.Controllers
 
             if (ModelState.IsValid)
             {
-                ApplicationUser user = new ApplicationUser
+                ApplicationUser user = new()
                 {
                     UserName = registrationModel.Email,
                     Email = registrationModel.Email,
